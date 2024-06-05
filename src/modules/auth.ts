@@ -28,15 +28,13 @@ export const protect = (req, res, next) => {
     return;
   }
 
-  const [, token] = bearer.split("");
+  const [, token] = bearer.split(" ");
 
   if (!token) {
     res.status(401);
     res.json({ message: "not valid token" });
     return;
   }
-
-  console.log(process.env.JWT_SECRET);
 
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET);
