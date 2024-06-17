@@ -13,6 +13,7 @@ export const createNewUser = async (req, res, next) => {
     res.json({ token });
     // = res.json({token:token})
   } catch (e) {
+    console.error(e);
     e.type = "input";
     next(e);
   }
